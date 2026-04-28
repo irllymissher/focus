@@ -3,6 +3,8 @@ package focusflow.PresentationLogicLayer.Presenters;
 import focusflow.BusinessLogicLayer.Services.UsuarioService;
 import focusflow.BusinessLogicLayer.Services.SesionService;
 import focusflow.BusinessLogicLayer.Models.*;
+import focusflow.BusinessLogicLayer.Services.IGestorFotos;
+import focusflow.BusinessLogicLayer.Services.IGestorUbicacion;
 import focusflow.PresentationLogicLayer.Views.*;
 
 /** 
@@ -18,7 +20,8 @@ public class FocusPresenter {
     private IFocusView vista;
     private SesionService sesionService;
     private UsuarioService usuarioService;
-
+    private IGestorFotos gestorFotos;
+    private IGestorUbicacion gestorUbicacion;
     /**
      * Constructor del presentador.
      * Recibe todas sus herramientas (dependencias) ya listas para usar.
@@ -26,10 +29,18 @@ public class FocusPresenter {
      * @param sesionService
      * @param usuarioService 
      */
-    public FocusPresenter(IFocusView vista, SesionService sesionService, UsuarioService usuarioService) {
+    public FocusPresenter(
+            IFocusView vista, 
+            SesionService sesionService, 
+            UsuarioService usuarioService,
+            IGestorFotos gestorFotos,
+            IGestorUbicacion gestorUbicacion) {
+        
         this.vista = vista;
         this.sesionService = sesionService;
         this.usuarioService = usuarioService;
+        this.gestorFotos = gestorFotos;
+        this.gestorUbicacion = gestorUbicacion;
     }
     
     /**
