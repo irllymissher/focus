@@ -11,10 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import java.io.File;
 
+
+/**
+ * Actividad temporal utilizada exclusivamente para probar
+ * el flujo de la cámara y la configuración del FileProvider de forma aislada.
+ * Esta clase no forma parte de la arquitectura final, sino que sirve como
+ * entorno de pruebas seguro antes de integrar el código en la vista principal.
+ */
 public class CamaraTestActivity extends AppCompatActivity {
 
-    // Código de petición (Request Code) para identificar que el resultado viene de la cámara[cite: 4]
+    // Identificador único para saber que el resultado que vuelve a la Actividad es el de la cámara
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    // Variable global para almacenar la ruta segura temporal donde la cámara guardará el archivo
     private Uri rutaFotoTemporal;
 
     @Override
@@ -24,6 +33,7 @@ public class CamaraTestActivity extends AppCompatActivity {
 
         Button btnCamara = findViewById(R.id.btn_test_camara);
 
+        // Escuchador del botón que lanza el proceso fotográfico
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,10 +42,14 @@ public class CamaraTestActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Prepara el archivo físico en el almacenamiento del dispositivo y lanza
+     * la aplicación nativa de la cámara pasándole la ruta de guardado.
+     */
     private void abrirCamara() {
-        Intent tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        // Creamos un archivo vacio
+        // Accedemos a la carpeta privada de la app (/files/FotosFocusFlow)
+        Intent tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File carpeta = new File(getExternalFilesDir(null), "FotosFocusFlow");
 
         // Si la carpeta no existe, la creamos
@@ -43,25 +57,32 @@ public class CamaraTestActivity extends AppCompatActivity {
             carpeta.mkdirs();
         }
 
+        // Le decimos al Intent de la cámara dónde guardar la imagen
         File archivoFoto = new File(carpeta, "foto_prueba.jpg");
 
         // Generamos la URI segura usando el FileProvider
         rutaFotoTemporal = FileProvider.getUriForFile(this, getPackageName() + ".provider", archivoFoto);
 
-        // Guardamos la foto en la ruta
+        // Le decimos al Intent de la cámara dónde guardar la imagen
         tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, rutaFotoTemporal);
 
         startActivityForResult(tomarFotoIntent, REQUEST_IMAGE_CAPTURE);
     }
 
-    // Capturas el resultado cuando cierra y se vuelva a la anterior pantalla
+    /**
+     * Intercepta la respuesta de las aplicaciones externas (como la cámara)
+     * una vez que han terminado su trabajo y devuelven el control a FocusFlow.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Aseguramos que la respuesta sea de nuestra petición de cámara
+        // y que el usuario haya tomado la foto con éxito (OK).
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Toast.makeText(this, "¡Foto guardada en: " + rutaFotoTemporal.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Foto guardada en: " + rutaFotoTemporal.toString(), Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Se canceló la foto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Foto cancelada", Toast.LENGTH_SHORT).show();
         }
     }
 }
