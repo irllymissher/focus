@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FocusFlowSinBackend">
         <activity
+            android:name=".InicioActivity"
+            android:exported="false" />
+        <activity
             android:name=".CamaraTestActivity"
             android:exported="true">
             <intent-filter>
@@ -29,8 +32,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
