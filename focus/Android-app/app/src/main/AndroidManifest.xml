@@ -20,7 +20,7 @@
 
         <!-- 1. Pantalla de Inicio: EL LANZADOR -->
         <activity
-            android:name=".InicioActivity"
+            android:name=".ui.activities.InicioActivity"
             android:theme="@style/Theme.FocusFlowSinBackend"
             android:exported="true">
             <intent-filter>
@@ -30,23 +30,23 @@
         </activity>
 
         <!-- 2. Flujo de Sesión y Evaluación -->
-        <activity android:name=".EscaneoActivity" />
-        <activity android:name=".SesionActivity" />
-        <activity android:name=".EvaluacionActivity" />
+        <activity android:name=".ui.activities.EscaneoActivity" />
+        <activity android:name=".ui.activities.SesionActivity" />
+        <activity android:name=".ui.activities.EvaluacionActivity" />
 
         <!-- 3. Pantalla de Selección de Descanso-->
-        <activity android:name=".DescansoActivity" />
+        <activity android:name=".ui.activities.DescansoActivity" />
 
         <!-- 4. Actividades de Descanso Específicas-->
-        <activity android:name=".GpsActivity" />
-        <activity android:name=".MentalActivity" />
-        <activity android:name=".EstiramientosActivity" />
-        <activity android:name=".AguaActivity" />
-        <activity android:name=".SnacksActivity" />
-        <activity android:name=".RespiracionActivity" />
+        <activity android:name=".ui.activities.GpsActivity" />
+        <activity android:name=".ui.activities.MentalActivity" />
+        <activity android:name=".ui.activities.EstiramientosActivity" />
+        <activity android:name=".ui.activities.AguaActivity" />
+        <activity android:name=".ui.activities.SnacksActivity" />
+        <activity android:name=".ui.activities.RespiracionActivity" />
 
         <!-- 5. Pantalla de Resumen Final -->
-        <activity android:name=".ResumenActivity" />
+        <activity android:name=".ui.activities.ResumenActivity" />
 
         <!-- PROVEEDOR DE ARCHIVOS: Vital para que GestorFotosAndroidImpl funcione -->
         <provider

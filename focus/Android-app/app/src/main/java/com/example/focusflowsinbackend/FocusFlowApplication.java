@@ -24,18 +24,20 @@ public class FocusFlowApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // Instacias de bases de datos local
+        // 1. Instancias que NO usan internet al crearse (Seguro en el Hilo Principal)
         UsuarioDAOCollectionsImpl usuarioDAO = new UsuarioDAOCollectionsImpl();
         SesionDAOCollectionsImpl sesionDAO = new SesionDAOCollectionsImpl();
-
-        // DAO descansso se mantiene en la nube
         DescansoDAOBack4AppImpl descansoDAO = new DescansoDAOBack4AppImpl();
 
-        // Inyectamos los DAO en los servicios (Inyeccion de dependencias)
         this.usuarioService = new UsuarioService(usuarioDAO);
-        this.sesionService = new SesionService(sesionDAO, descansoDAO);
 
+        // 2. Metemos la inicialización de SesionService (que descarga cosas de Back4App)
+        // y la búsqueda del usuario en un hilo secundario para no bloquear la pantalla.
         new Thread(() -> {
+
+            sesionService = new SesionService(sesionDAO, descansoDAO);
+
+            // Buscamos o creamos al usuario
             usuarioActual = usuarioService.buscarUsuario("Tester_Android");
             if (usuarioActual == null) {
                 usuarioActual = usuarioService.registrarNuevoUsuario("Tester_Android");
