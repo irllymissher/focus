@@ -79,7 +79,7 @@ public class EvaluacionActivity extends AppCompatActivity implements IEvaluacion
 
         sessionData.setBreakLevel(nivel); // Actualizamos la mochila temporal[cite: 57]
 
-        Intent intent = new Intent(this, DESCA);
+        Intent intent = new Intent(this, DescansoActivity.class);
         intent.putExtra(SessionData.EXTRA_KEY, sessionData);
         startActivity(intent);
         finish();

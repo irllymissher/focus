@@ -1,60 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores base -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 
-    <!-- ── Backgrounds ─────────────────────────────────────── -->
-    <color name="bg_dark">#1A1724</color>
-    <color name="bg_darkest">#131020</color>
-    <color name="surface">#231F32</color>
-    <color name="surface2">#2C2840</color>
-    <color name="surface_dark">#0D0B14</color>
-    <color name="map_bg">#161E2C</color>
-
-    <!-- ── Borders / dividers ──────────────────────────────── -->
-    <color name="border">#3A3550</color>
-
-    <!-- ── Text ───────────────────────────────────────────── -->
-    <color name="text_primary">#F2F0FA</color>
-    <color name="text_muted">#8A83A8</color>
-    <color name="text_dim">#5C566E</color>
-
-    <!-- ── Accent: Purple (principal) ─────────────────────── -->
-    <!-- oklch(0.65 0.22 280) ≈ #7B5EEA -->
+    <!-- Marca FocusFlow -->
+    <color name="green_primary">#4CAF50</color>
     <color name="purple_primary">#7B5EEA</color>
-    <color name="purple_soft">#7B5EEA26</color>    <!-- 15% alpha -->
-    <color name="purple_mid">#7B5EEA59</color>     <!-- 35% alpha -->
+    <color name="orange_primary">#FF9800</color>
+    <color name="blue_primary">#2196F3</color>
+    <color name="red_primary">#F44336</color>
 
-    <!-- ── Accent: Green ──────────────────────────────────── -->
-    <!-- oklch(0.72 0.18 155) ≈ #2ECC8A -->
-    <color name="green_primary">#2ECC8A</color>
-    <color name="green_soft">#2ECC8A26</color>
+    <!-- Colores de Interfaz que faltaban en los logs -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_dim">#B0B0B0</color>
+    <color name="text_muted">#757575</color>
+    <color name="surface">#2C2C2C</color>
+    <color name="surface_dark">#1F1F1F</color>
+    <color name="bg_dark">#121212</color>
+    <color name="bg_darkest">#0A0A0A</color>
+    <color name="border">#333333</color>
 
-    <!-- ── Accent: Orange ─────────────────────────────────── -->
-    <!-- oklch(0.72 0.18 55) ≈ #E8933A -->
-    <color name="orange_primary">#E8933A</color>
+    <!-- Variaciones soft -->
+    <color name="green_soft">#E8F5E9</color>
+    <color name="purple_soft">#F3E5F5</color>
+    <color name="purple_mid">#CE93D8</color>
 
-    <!-- ── Accent: Red / heart rate ───────────────────────── -->
-    <!-- oklch(0.65 0.22 22) ≈ #E05050 -->
-    <color name="red_primary">#E05050</color>
-
-    <!-- ── Accent: Yellow ─────────────────────────────────── -->
-    <!-- oklch(0.82 0.16 85) ≈ #D4B840 -->
-    <color name="yellow_primary">#D4B840</color>
-
-    <!-- ── Accent: Blue (agua) ────────────────────────────── -->
-    <!-- oklch(0.65 0.18 220) ≈ #3A8FD4 -->
-    <color name="blue_primary">#3A8FD4</color>
-
-    <!-- Material theme obligatorios -->
-    <color name="colorPrimary">@color/purple_primary</color>
-    <color name="colorPrimaryVariant">#5A3EC8</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">@color/green_primary</color>
-    <color name="colorOnSecondary">#000000</color>
-    <color name="colorSurface">@color/surface</color>
-    <color name="colorOnSurface">@color/text_primary</color>
-    <color name="colorBackground">@color/bg_dark</color>
-    <color name="colorOnBackground">@color/text_primary</color>
-    <color name="colorError">@color/red_primary</color>
-    <color name="colorOnError">#FFFFFF</color>
-
+    <!-- Color para el fondo del mapa (Placeholder del GPS) -->
+    <color name="map_bg">#252525</color>
 </resources>

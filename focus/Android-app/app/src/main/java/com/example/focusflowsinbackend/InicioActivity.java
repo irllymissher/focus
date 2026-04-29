@@ -33,7 +33,7 @@ public class InicioActivity extends AppCompatActivity implements IInicioView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio); // Mantenemos el diseño visual[cite: 35]
+        setContentView(R.layout.activity_inicio2); // Mantenemos el diseño visual
 
         // Recuperar número de sesión (si venimos de un reinicio)[cite: 49, 52]
         sessionNumber = getIntent().getIntExtra("session_number", 1);
