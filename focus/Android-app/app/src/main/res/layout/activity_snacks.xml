@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla 4.4b: Snacks — Nivel 4 (Agotamiento severo) -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:paddingHorizontal="22dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/text_muted"
+        app:title="@string/screen_snacks"
+        app:titleTextColor="@color/text_muted"
+        app:titleTextAppearance="@style/TextAppearance.TopBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_snacks_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snacks_subtitle"
+        android:textSize="14sp"
+        android:textColor="@color/text_muted"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Grid 2x2 de snacks -->
+    <!-- Usar GridLayoutManager(context, 2) en RecyclerView, o un GridLayout -->
+    <GridLayout
+        android:id="@+id/gl_snacks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_snacks_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/btn_snacks_done"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Frutos secos -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_nuts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="6dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🥜" android:textSize="36sp" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Frutos secos" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Omega-3 · energía sostenida" android:textSize="11sp"
+                    android:textColor="@color/text_dim" android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fruta fresca -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_fruit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="6dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🍎" android:textSize="36sp" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Fruta fresca" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Vitaminas · azúcar natural" android:textSize="11sp"
+                    android:textColor="@color/text_dim" android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Yogur -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_yogurt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="6dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🥛" android:textSize="36sp" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Yogur" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Proteína · probióticos" android:textSize="11sp"
+                    android:textColor="@color/text_dim" android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Avena -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_oats"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="6dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🌾" android:textSize="36sp" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Avena" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Carbohidratos complejos" android:textSize="11sp"
+                    android:textColor="@color/text_dim" android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </GridLayout>
+
+    <!-- Botón completado -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_snacks_done"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/btn_done"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/purple_primary"
+        android:enabled="false"
+        app:cornerRadius="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

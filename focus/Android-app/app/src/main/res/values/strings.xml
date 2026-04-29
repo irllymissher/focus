@@ -1,3 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FocusFlowSinBackend</string>
+
+    <!-- App -->
+    <string name="app_name">FocusFlow</string>
+
+    <!-- Pantalla 1: Inicio -->
+    <string name="session_subtitle">Sesión #1</string>
+    <string name="goal_label">¿Cuál es tu objetivo para hoy?</string>
+    <string name="goal_hint">Ej: Terminar el capítulo 3…</string>
+    <string name="minutes_session">minutos de sesión</string>
+    <string name="btn_start_session">Iniciar sesión de estudio</string>
+    <string name="btn_skip_scan">Omitir escaneo</string>
+
+    <!-- Pantalla 1.1: Escaneo biométrico -->
+    <string name="screen_escaneo">Escaneo biométrico</string>
+    <string name="scanning">Analizando estado biométrico…</string>
+    <string name="scan_done">✓ Escaneo completado</string>
+
+    <!-- Pantalla 2: Sesión activa -->
+    <string name="screen_sesion">Sesión en curso</string>
+    <string name="goal_placeholder">Sin objetivo definido</string>
+    <string name="bubble_mode">Modo burbuja · Notificaciones bloqueadas</string>
+    <string name="btn_stop_session">Parar sesión</string>
+
+    <!-- Pantalla 3: Evaluación -->
+    <string name="screen_evaluacion">Evaluación de estado</string>
+    <string name="stress_level">Nivel de estrés</string>
+    <string name="drawing_label">Dibuja cómo te sientes</string>
+    <string name="drawing_hint">Usa el dedo para dibujar</string>
+    <string name="btn_clear">Borrar</string>
+    <string name="bpm_label">Pulsaciones</string>
+    <string name="btn_calculate">Calcular tiempo de descanso y actividad</string>
+
+    <!-- Pantalla 4: Descanso -->
+    <string name="screen_descanso">Tiempo de descanso</string>
+    <string name="recommendation_hint">Recomendación basada en tu estado</string>
+    <string name="recommended">Recomendado</string>
+    <string name="btn_start_break">Comenzar descanso</string>
+
+    <!-- Pantalla 4.1: GPS -->
+    <string name="screen_gps">Ruta de running</string>
+    <string name="route_label">📍 Ruta circular · 1.8 km</string>
+    <string name="btn_start_route">Iniciar ruta</string>
+    <string name="btn_done_check">Completado ✓</string>
+
+    <!-- Pantalla 4.3: Estiramientos -->
+    <string name="screen_estiramientos">Estiramientos</string>
+    <string name="your_turn">Tu turno — tómate tu tiempo</string>
+    <string name="btn_next">Siguiente →</string>
+    <string name="btn_prev">← Anterior</string>
+
+    <!-- Pantalla 4.4a: Agua -->
+    <string name="screen_agua">Hidratación</string>
+    <string name="water_title">Toma 2 vasos de agua</string>
+    <string name="water_desc">La hidratación mejora la concentración y reduce la fatiga mental.</string>
+    <string name="glass_1">Vaso 1</string>
+    <string name="glass_2">Vaso 2</string>
+    <string name="daily_goal">Objetivo diario</string>
+    <string name="btn_done_next">Completado · Siguiente →</string>
+
+    <!-- Pantalla 4.4b: Snacks -->
+    <string name="screen_snacks">Snacks neuro-saludables</string>
+    <string name="snacks_subtitle">Elige la opción que más te apetezca ahora:</string>
+    <string name="btn_done">Completado ✓</string>
+
+    <!-- Pantalla 4.5: Respiración -->
+    <string name="screen_respiracion">Respira con calma</string>
+    <string name="breath_instruction">Inhala 4s · Mantén 7s · Exhala 8s</string>
+    <string name="btn_start_breathing">Comenzar respiración</string>
+    <string name="cycles_label">Ciclos completados: %1$d</string>
+
+    <!-- Pantalla 5: Resumen -->
+    <string name="screen_resumen">Balance del día</string>
+    <string name="completed_blocks">Bloques completados</string>
+    <string name="btn_back_to_start">Volver al inicio</string>
+
+    <!-- Accessibility -->
+    <string name="cd_back">Volver atrás</string>
+    <string name="cd_glass_water">Vaso de agua</string>
+    <string name="cd_heart_rate">Frecuencia cardíaca</string>
+
 </resources>

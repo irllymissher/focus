@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla 4.5: Respiración 4-7-8 — Nivel 5 (Burnout) -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_darkest"
+    android:paddingHorizontal="22dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/text_muted"
+        app:title="@string/screen_respiracion"
+        app:titleTextColor="@color/text_muted"
+        app:titleTextAppearance="@style/TextAppearance.TopBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.focusflow.app.views.BreathingCircleView
+        android:id="@+id/v_breath_circle"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_breath_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
+    <!-- Contador de segundos (centrado sobre el círculo) -->
+    <TextView
+        android:id="@+id/tv_breath_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4·7·8"
+        android:textSize="36sp"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
+        android:textColor="@color/purple_primary"
+        app:layout_constraintTop_toTopOf="@id/v_breath_circle"
+        app:layout_constraintBottom_toBottomOf="@id/v_breath_circle"
+        app:layout_constraintStart_toStartOf="@id/v_breath_circle"
+        app:layout_constraintEnd_toEndOf="@id/v_breath_circle" />
+
+    <!-- Fase actual (GONE en estado idle) -->
+    <TextView
+        android:id="@+id/tv_breath_phase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inhala"
+        android:textSize="13sp"
+        android:textColor="@color/text_muted"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_breath_count"
+        app:layout_constraintStart_toStartOf="@id/v_breath_circle"
+        app:layout_constraintEnd_toEndOf="@id/v_breath_circle" />
+
+    <!-- Instrucción inicial (GONE cuando empieza) -->
+    <TextView
+        android:id="@+id/tv_breath_instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/breath_instruction"
+        android:textSize="14sp"
+        android:textColor="@color/text_muted"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.6"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/v_breath_circle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Contador de ciclos completados -->
+    <TextView
+        android:id="@+id/tv_cycles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="13sp"
+        android:textColor="@color/text_muted"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_breath_instruction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Dots indicadores de fase -->
+    <LinearLayout
+        android:id="@+id/ll_phase_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_cycles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View android:id="@+id/dot_inhale" android:layout_width="8dp" android:layout_height="8dp"
+            android:layout_marginEnd="8dp" android:background="@drawable/bg_dot_purple" />
+        <View android:id="@+id/dot_hold" android:layout_width="8dp" android:layout_height="8dp"
+            android:layout_marginEnd="8dp" android:background="@drawable/bg_dot_inactive" />
+        <View android:id="@+id/dot_exhale" android:layout_width="8dp" android:layout_height="8dp"
+            android:background="@drawable/bg_dot_inactive" />
+    </LinearLayout>
+
+    <!-- Botón iniciar / completado -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_breath_action"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/btn_start_breathing"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/purple_primary"
+        app:cornerRadius="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

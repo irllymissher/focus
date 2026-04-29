@@ -1,6 +1,7 @@
 package com.example.focusflowsinbackend;
 import android.app.Application;
 
+import focusflow.BusinessLogicLayer.Models.Usuario;
 import focusflow.BusinessLogicLayer.Services.SesionService;
 import focusflow.BusinessLogicLayer.Services.UsuarioService;
 import focusflow.DataAccessLayer.SesionDAOCollectionsImpl;
@@ -18,6 +19,7 @@ public class FocusFlowApplication extends Application {
     // Almacenamos la lógica de negocio.
     private SesionService sesionService;
     private UsuarioService usuarioService;
+    private Usuario usuarioActual; // Guardaremos aquí quién está usando la app
 
     public void onCreate() {
         super.onCreate();
@@ -32,6 +34,13 @@ public class FocusFlowApplication extends Application {
         // Inyectamos los DAO en los servicios (Inyeccion de dependencias)
         this.usuarioService = new UsuarioService(usuarioDAO);
         this.sesionService = new SesionService(sesionDAO, descansoDAO);
+
+        new Thread(() -> {
+            usuarioActual = usuarioService.buscarUsuario("Tester_Android");
+            if (usuarioActual == null) {
+                usuarioActual = usuarioService.registrarNuevoUsuario("Tester_Android");
+            }
+        }).start();
     }
 
     // Proveen acceso a los servicios para que las

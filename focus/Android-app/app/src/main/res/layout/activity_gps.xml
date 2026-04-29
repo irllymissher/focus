@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla 4.1: GPS — Nivel 1 (Energía alta) -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:paddingHorizontal="22dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/text_muted"
+        app:title="@string/screen_gps"
+        app:titleTextColor="@color/text_muted"
+        app:titleTextAppearance="@style/TextAppearance.TopBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Mapa — usar com.google.android.gms.maps.MapView o fragment -->
+    <FrameLayout
+        android:id="@+id/fl_map"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/map_bg"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/map_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_scan_grid" />
+
+        <!-- Etiqueta de ruta -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="12dp"
+            android:text="📍 Ruta circular · 1.8 km"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/green_primary"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:background="@drawable/bg_map_label" />
+    </FrameLayout>
+
+    <!-- Tarjeta métricas -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_metrics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="@color/border"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/fl_map"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="1.8 km" android:textSize="16sp" android:textStyle="bold"
+                    android:fontFamily="monospace" android:textColor="@color/green_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Distancia" android:textSize="11sp" android:textColor="@color/text_dim" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="15 min" android:textSize="16sp" android:textStyle="bold"
+                    android:fontFamily="monospace" android:textColor="@color/green_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Duración" android:textSize="11sp" android:textColor="@color/text_dim" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="~8 min/km" android:textSize="16sp" android:textStyle="bold"
+                    android:fontFamily="monospace" android:textColor="@color/green_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Ritmo" android:textSize="11sp" android:textColor="@color/text_dim" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Timer de descanso (GONE hasta iniciar) -->
+    <TextView
+        android:id="@+id/tv_break_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="15:00"
+        android:textSize="40sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/green_primary"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/card_metrics"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Botón iniciar / completado -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_gps_action"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/btn_start_route"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/green_primary"
+        app:cornerRadius="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

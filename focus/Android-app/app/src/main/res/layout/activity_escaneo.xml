@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla 1.1: Escaneo biométrico -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:paddingHorizontal="8dp"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/text_muted"
+        app:title="@string/screen_escaneo"
+        app:titleTextColor="@color/text_muted"
+        app:titleTextAppearance="@style/TextAppearance.TopBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Viewfinder / camera area -->
+    <FrameLayout
+        android:id="@+id/fl_camera"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/surface_dark"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_scan_status"
+        app:layout_constraintVertical_weight="1">
+
+        <!-- Camera preview — reemplazar con PreviewView de CameraX -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/camera_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Grid overlay (usar un View con GridDrawable o canvas custom) -->
+        <View
+            android:id="@+id/v_grid_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_scan_grid"
+            android:alpha="0.5" />
+
+        <!-- Scan line animada — animar translateY con ObjectAnimator -->
+        <View
+            android:id="@+id/v_scan_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/bg_scan_line"
+            android:layout_gravity="top" />
+
+        <!-- Reticle corners — custom View recomendado -->
+        <View
+            android:id="@+id/v_reticle"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_reticle" />
+
+        <!-- Progress bar inferior -->
+        <ProgressBar
+            android:id="@+id/pb_scan"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_gravity="bottom"
+            android:progressTint="@color/purple_primary"
+            android:max="100"
+            android:progress="0" />
+
+    </FrameLayout>
+
+    <!-- Estado del escaneo -->
+    <TextView
+        android:id="@+id/tv_scan_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scanning"
+        android:textSize="14sp"
+        android:textColor="@color/text_muted"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="22dp"
+        app:layout_constraintTop_toBottomOf="@id/fl_camera"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Métricas post-escaneo (GONE por defecto, mostrar al completar) -->
+    <LinearLayout
+        android:id="@+id/ll_metrics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_scan_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- BPM -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:id="@+id/tv_bpm" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="72"
+                android:textSize="18sp" android:textStyle="bold"
+                android:fontFamily="monospace" android:textColor="@color/green_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="BPM" android:textSize="11sp" android:textColor="@color/text_dim" />
+        </LinearLayout>
+
+        <!-- Estrés -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:id="@+id/tv_stress_scan" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Bajo"
+                android:textSize="18sp" android:textStyle="bold"
+                android:textColor="@color/green_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Estrés" android:textSize="11sp" android:textColor="@color/text_dim" />
+        </LinearLayout>
+
+        <!-- Energía -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:id="@+id/tv_energy_scan" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Alta"
+                android:textSize="18sp" android:textStyle="bold"
+                android:textColor="@color/green_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Energía" android:textSize="11sp" android:textColor="@color/text_dim" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
